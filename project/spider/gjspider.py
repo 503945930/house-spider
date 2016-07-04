@@ -8,7 +8,9 @@ def gjscrapy():
     headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'}
     result = requests.get(url,params={'from':'zjsr','kw':'东立国际花城'},headers = headers)
     soup = BeautifulSoup(result.text,"lxml")
-    print soup.find_all("li",class_=re.compile("list"))
+    result_li = soup.find_all("li",class_=re.compile("list"))
+    for item in result_li:
+        print item.img['src']
 
 
 if __name__ == '__main__':
